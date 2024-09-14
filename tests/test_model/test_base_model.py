@@ -6,20 +6,22 @@ import os
 import unittest
 from models.base_model import BaseModel
 
-class TestBasemodel(unittest.TestCase):
-     
-     """
-     Unittest for BaseModel
-     """
 
-     def setUp(self):
-       """
+class TestBasemodel(unittest.TestCase):
+    """
+    Unittest for BaseModel
+    """
+
+
+    def setUp(self):
+        """
         Setup for temporary file path
         """
         try:
             os.rename("file.json", "tmp.json")
         except FileNotFoundError:
             pass
+
 
     def tearDown(self):
         """
@@ -33,6 +35,8 @@ class TestBasemodel(unittest.TestCase):
             os.rename("tmp.json", "file.json")
         except FileNotFoundError:
             pass
+        
+        
     def test_init(self):
         """
         Test for init
@@ -42,6 +46,7 @@ class TestBasemodel(unittest.TestCase):
         self.assertIsNotNone(my_model.id)
         self.assertIsNotNone(my_model.created_at)
         self.assertIsNotNone(my_model.updated_at)
+
 
     def test_save(self):
         """
@@ -54,6 +59,7 @@ class TestBasemodel(unittest.TestCase):
         current_updated_at = my_model.save()
 
         self.assertNotEqual(initial_updated_at, current_updated_at)
+
 
     def test_to_dict(self):
         """

@@ -16,9 +16,11 @@ class BaseModel:
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
 
+
     def save(self):
         """Updates the timestamp of the instance."""
         self.updated_at = datetime.utcnow()
+
 
     def to_dict(self):
         """Returns a dictionary representation of the instance."""
@@ -28,6 +30,7 @@ class BaseModel:
         inst_dict["updated_at"] = self.updated_at.isoformat()
 
         return inst_dict
+
 
     def __str__(self):
         """Returns a string representation of the instance."""

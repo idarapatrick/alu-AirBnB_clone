@@ -67,15 +67,16 @@ class TestBasemodel(unittest.TestCase):
         Test for to_dict method
         """
         my_model = BaseModel()
+    
 
         my_model_dict = my_model.to_dict()
 
         self.assertIsInstance(my_model_dict, dict)
-
         self.assertEqual(my_model_dict["__class__"], 'BaseModel')
         self.assertEqual(my_model_dict['id'], my_model.id)
         self.assertEqual(my_model_dict['created_at'], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict["updated_at"], my_model.created_at.isoformat())
+    
+        self.assertEqual(my_model_dict["updated_at"], my_model.updated_at.isoformat())
 
 
     def test_str(self):
